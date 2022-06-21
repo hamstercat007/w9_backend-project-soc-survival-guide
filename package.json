@@ -6,7 +6,8 @@
     "start": "node ./bin/www",
     "db:createResourcesTable": "node ./db/scripts/createResourcesTable.js",
     "db:dropResourcesTable": "node ./db/scripts/dropResourcesTable.js",
-    "db:populateResourcesTable": "node ./db/scripts/populateResourcesTable.js"
+    "db:populateResourcesTable": "node ./db/scripts/populateResourcesTable.js",
+    "db:resetResourcesTable": "node ./db/scripts/dropResourcesTable.js && node ./db/scripts/createResourcesTable.js && node ./db/scripts/populateResourcesTable.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
