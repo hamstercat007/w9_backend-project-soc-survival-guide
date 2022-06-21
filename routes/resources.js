@@ -1,9 +1,5 @@
-/*
-
-*/
-
 var express = require('express');
-const {getAllResources, getResourcesByCategory} = require('../models/resources');
+const {getAllResources, getResourcesByCategory, postResource} = require('../models/resources');
 var router = express.Router();
 
 router.get('/', async function(req, res, next) {
@@ -23,7 +19,11 @@ router.get('/', async function(req, res, next) {
 
 /* GET all by category */
 
-
+router.post('/', async function (req,res, next){
+    const request = await req.body
+    const responseObject = await postResource(request)
+    res.json(responseObject)
+});
 
 
 

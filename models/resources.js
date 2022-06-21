@@ -26,7 +26,16 @@ async function getResourcesByCategory(input) {
 return result  
 }
 
+async function postResource(input){
+const queryString = "INSERT INTO resources (headline, description, url, category, format) VALUES ($1, $2, $3, $4, $5) RETURNING *; "
+const queryParams = [input.headline, input.description, input.url, input.category, input.format];
+const response = await pool.query(queryString, queryParams)
+const result = 
+  {
+  success: true,
+  payload: response.rows
+  }
+return result 
+}
 
-
-
-module.exports ={ getAllResources, getResourcesByCategory}
+module.exports ={ getAllResources, getResourcesByCategory, postResource}
