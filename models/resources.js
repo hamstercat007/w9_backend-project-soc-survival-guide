@@ -38,4 +38,18 @@ const result =
 return result 
 }
 
-module.exports ={ getAllResources, getResourcesByCategory, postResource}
+
+async function deleteResource (input) {
+  const id = Number(input.id)
+
+  const response = await pool.query("DELETE FROM resources WHERE id = $1 RETURNING * ;", [id])
+  const result = 
+  {
+  success: true,
+  payload: response.rows
+  }
+return result  
+}
+
+
+module.exports ={ getAllResources, getResourcesByCategory, postResource, deleteResource}

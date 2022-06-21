@@ -1,5 +1,5 @@
 var express = require('express');
-const {getAllResources, getResourcesByCategory, postResource} = require('../models/resources');
+const {getAllResources, getResourcesByCategory, postResource, deleteResource} = require('../models/resources');
 var router = express.Router();
 
 router.get('/', async function(req, res, next) {
@@ -24,6 +24,18 @@ router.post('/', async function (req,res, next){
     const responseObject = await postResource(request)
     res.json(responseObject)
 });
+
+
+/* Delete by id   */
+
+router.delete('/:id', async function (req,res, next){
+  const request = await req.params
+  const responseObject = await deleteResource(request)
+  res.json(responseObject)
+});
+
+
+
 
 
 
