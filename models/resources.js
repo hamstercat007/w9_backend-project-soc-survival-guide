@@ -14,7 +14,10 @@ async function getAllResources () {
 }
 
 async function getResourcesByCategory(input) {
-  const response = await pool.query("SELECT * FROM resources WHERE category = $1", [input])
+  let request = input.category;
+  request = request.charAt(0).toUpperCase() + request.slice(1)
+  console.log(request)
+  const response = await pool.query("SELECT * FROM resources WHERE category = $1", [request])
   const result = 
   {
   success: true,
