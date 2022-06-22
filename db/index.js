@@ -10,5 +10,5 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false },
 });
 
-console.log(pool.query("SELECT NOW()"));
+// console.log(pool.query("SELECT NOW()"));
 module.exports = pool;

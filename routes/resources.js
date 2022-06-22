@@ -11,9 +11,8 @@ var router = express.Router();
 //if there is at least one param
 router.get("/", async function (req, res, next) {
   let responseObject;
-  if (Object.keys(req.query).length > 0) {
-    const query = req.query;
-    responseObject = await getResourcesByCategory(query);
+  if (req.query.category != undefined) {
+    responseObject = await getResourcesByCategory(req.query.category);
   } else {
     responseObject = await getAllResources();
   }
@@ -31,7 +30,11 @@ router.get("/", async function (req, res, next) {
 router.post("/", async function (req, res, next) {
   const request = await req.body;
   const responseObject = await postResource(request);
-  res.json(responseObject);
+  const result = {
+    success: true,
+    payload: responseObject,
+  };
+  res.json(result);
 });
 
 /* Delete by id   */
@@ -39,7 +42,7 @@ router.post("/", async function (req, res, next) {
 router.delete("/:id", async function (req, res, next) {
   const request = await req.params;
   const responseObject = await deleteResource(request);
-  res.json(responseObject);
+  res.status(204).send();
 });
 
 module.exports = router;

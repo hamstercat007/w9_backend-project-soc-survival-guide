@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
     "db:createResourcesTable": "node ./db/scripts/createResourcesTable.js",
     "db:dropResourcesTable": "node ./db/scripts/dropResourcesTable.js",
     "db:populateResourcesTable": "node ./db/scripts/populateResourcesTable.js",
