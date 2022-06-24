@@ -1,5 +1,4 @@
 const pool = require("../db/index");
-require("dotenv").config();
 
 /* GET all RESOURCES */
 
