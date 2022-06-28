@@ -15,7 +15,7 @@ describe('GET /api/v1/resources tests', function() {
       expect(response.status).toEqual(200);
     });
   
-  it.only('response with success: true and payload: array', async function() {
+  it('response with success: true and payload: array', async function() {
     await new Promise((resolve) => setTimeout(() => resolve(), 2000));
     const response = await request(app)
     .get('/api/v1/resources')
@@ -27,6 +27,21 @@ describe('GET /api/v1/resources tests', function() {
     
     }));
   } )
+
+  it.only('response with an existing category', async function () {
+    const chosenCategory = 'React';
+    await new Promise((resolve) => setTimeout(() => resolve(), 2000));
+    const response = await request(app)
+    .get(`/api/v1/resources?category=${chosenCategory}`)
+    .set('Accept', 'application/json')
+    // console.log(response.body);
+    expect(response.body).toStrictEqual(expect.objectContaining({
+      'success': expect.any(Boolean),
+      'payload': expect.arrayContaining([
+        expect.objectContaining({category: chosenCategory})
+      ])
+    }));
+  })
   
 });
 
