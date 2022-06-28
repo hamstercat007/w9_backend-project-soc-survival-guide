@@ -46,29 +46,30 @@ describe("GET /api/v1/resources tests", function () {
 });
 
 describe("Post request handler tests", function () {
-  it.only("posts a new resource", async function () {
+  it("posts a new resource", async function () {
     const newResource = {
       headline: "React - don't do it! ",
       description: "React goes to Hollywood",
       url: "https://www.youtube.com/watch?v=eZJOSK4gXl4&t=757s",
       category: "React",
       format: "Video",
-      id: expect.any(Number)
+      id: expect.any(Number),
     };
 
     await new Promise((resolve) => setTimeout(() => resolve(), 2000));
     const response = await request(app)
       .post("/api/v1/resources")
       .send(newResource)
-    // .expect(201);
-    .set("Accept", "application/json");
+      .set("Accept", "application/json");
+
     console.log(response.body);
 
     expect(response.headers["content-type"]).toMatch(/json/);
+    expect(response.status).toEqual(201);
     expect(response.body).toStrictEqual(
       expect.objectContaining({
         success: expect.any(Boolean),
-        payload: newResource
+        payload: newResource,
       })
     );
   });
