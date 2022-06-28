@@ -7,8 +7,7 @@ const {
 } = require("../models/resources");
 var router = express.Router();
 
-//query params passed in url  = req.query. ?category=figma
-//if there is at least one param
+
 router.get("/", async function (req, res, next) {
   let responseObject;
   if (req.query.category != undefined) {
