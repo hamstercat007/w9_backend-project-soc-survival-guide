@@ -8,7 +8,8 @@
     "db:createResourcesTable": "node ./db/scripts/createResourcesTable.js",
     "db:dropResourcesTable": "node ./db/scripts/dropResourcesTable.js",
     "db:populateResourcesTable": "node ./db/scripts/populateResourcesTable.js",
-    "db:resetResourcesTable": "node ./db/scripts/dropResourcesTable.js && node ./db/scripts/createResourcesTable.js && node ./db/scripts/populateResourcesTable.js"
+    "db:resetResourcesTable": "node ./db/scripts/dropResourcesTable.js && node ./db/scripts/createResourcesTable.js && node ./db/scripts/populateResourcesTable.js",
+    "test": "jest --detectOpenHandles"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -21,6 +22,8 @@
     "pg": "^8.7.3"
   },
   "devDependencies": {
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.1",
+    "jest": "^28.1.1",
+    "supertest": "^6.2.3"
   }
 }
