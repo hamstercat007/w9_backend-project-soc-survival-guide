@@ -53,25 +53,24 @@ describe("Post request handler tests", function () {
       url: "https://www.youtube.com/watch?v=eZJOSK4gXl4&t=757s",
       category: "React",
       format: "Video",
+      id: expect.any(Number)
     };
 
     await new Promise((resolve) => setTimeout(() => resolve(), 2000));
     const response = await request(app)
       .post("/api/v1/resources")
-      .send(newResource);
+      .send(newResource)
     // .expect(201);
+    .set("Accept", "application/json");
     console.log(response.body);
-    //   .set("Accept", "application/json");
 
-    // expect(response.headers["content-type"]).toMatch(/json/);
-    // expect(response.body).toStrictEqual(
-    //   expect.objectContaining({
-    //     success: expect.any(Boolean),
-    //     payload: expect.arrayContaining([
-    //       expect.objectContaining({ newResource }),
-    //     ]),
-    //   })
-    // );
+    expect(response.headers["content-type"]).toMatch(/json/);
+    expect(response.body).toStrictEqual(
+      expect.objectContaining({
+        success: expect.any(Boolean),
+        payload: newResource
+      })
+    );
   });
 });
 
