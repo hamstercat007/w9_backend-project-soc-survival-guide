@@ -70,21 +70,25 @@ Contains scripts to create a resources table, populate it with starting resource
 
 ### lib
 
-contains a data file, containing array of objects, each object has information on a different learning resource
+Contains a data file, containing array of objects, each object has information on a different learning resource
 
 ### models
 
-contains a file of functions, each function contains a PostgreSQL query. The functions are exported to be used in the routers.
+Contains a file of functions, each function contains a PostgreSQL query. The functions are exported to be used in the routers.
 
 ### routes
 
-contains a series of files that, each file containging route handlers for particular uri addresses e.g. index.js handles requests to /api/v1
+Contains a series of files that, each file containging route handlers for particular uri addresses e.g. index.js handles requests to /api/v1
 resources.js handles requests to /api/v1/resources
 users.js handles requests to /api/v1.users
 
-### public/views/bin
+### public/views
 
 Was installed by express-generator(http://expressjs.com/en/starter/generator.html). We did not change these files, as we didn't know what it would break.
+
+### bin
+
+Contains the default port number, if you want to change it you will find in the www file
 
 ## API Reference
 
