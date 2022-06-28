@@ -61,7 +61,30 @@ To run tests, run the following command
 ```
 
 
+## Architecture
 
+### db
+
+Contains a file that attaches your database credentials to the PostgreSql pool.
+Contains scripts to create a resources table, populate it with starting resources from the library, and to drop the table if you need to reset
+
+### lib
+
+contains a data file, containing array of objects, each object has information on a different learning resource
+
+### models
+
+contains a file of functions, each function contains a PostgreSQL query. The functions are exported to be used in the routers.
+
+### routes
+
+contains a series of files that, each file containging route handlers for particular uri addresses e.g. index.js handles requests to /api/v1
+resources.js handles requests to /api/v1/resources
+users.js handles requests to /api/v1.users
+
+### public/views/bin
+
+Was installed by express-generator(http://expressjs.com/en/starter/generator.html). We did not change these files, as we didn't know what it would break.
 
 ## API Reference
 
