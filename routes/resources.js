@@ -34,6 +34,7 @@ router.post("/", async function (req, res, next) {
     success: true,
     payload: responseObject,
   };
+  res.status(201);
   res.json(result);
 });
 
