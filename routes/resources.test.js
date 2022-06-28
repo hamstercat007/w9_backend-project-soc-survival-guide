@@ -1,13 +1,6 @@
 const app = require("../app")
 const request = require('supertest');
-const assert = require('assert');
 const pool = require("../db/index.js")
-
-
-// beforeAll(done => {
-//     done()
-//   })
-
 
 
 describe('GET /api/v1/resources tests', function() {
@@ -17,14 +10,28 @@ describe('GET /api/v1/resources tests', function() {
       const response = await request(app)
         .get('/api/v1/resources')
         .set('Accept', 'application/json')
-        console.log(response.headers)
+        // console.log(response.headers)
       expect(response.headers["content-type"]).toMatch(/json/);
       expect(response.status).toEqual(200);
     });
-    
-    
-  });
   
+  it.only('response with success: true and payload: array', async function() {
+    await new Promise((resolve) => setTimeout(() => resolve(), 2000));
+    const response = await request(app)
+    .get('/api/v1/resources')
+    .set('Accept', 'application/json')
+    //console.log(response.body);
+    expect(response.body).toStrictEqual(expect.objectContaining({
+      'success': expect.any(Boolean),
+      'payload': expect.any(Array),
+    
+    }));
+  } )
+  
+});
+
+
  afterAll( async () => {
     await pool.end();
 });
+
