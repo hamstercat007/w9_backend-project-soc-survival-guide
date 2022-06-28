@@ -15,11 +15,11 @@ The SOC Survival Guide website makes fetch requests to this server
 
 To run this project, you will need to add the following environment variables to your .env file
 
-PGUSER
-PGHOST
-PGDATABASE
-PGPASSWORD
-PGPORT
+#### PGUSER
+#### PGHOST
+#### PGDATABASE
+#### PGPASSWORD
+#### PGPORT
 
 
 
@@ -145,9 +145,9 @@ No parameters needed to get all entries
 
 ## Authors
 
--Christophe Charbonneau-Freeston[https://github.com/St0neofFr33dom]
--Lisa Mac[https://github.com/hamstercat007]
--Miguel Lamas[https://github.com/MiguelLamas]
--Mohamed Ali[https://github.com/CodeNameMoe]
--Mutaz Obsiye [https://github.com/MumtazO]
+#### Christophe Charbonneau-Freeston[https://github.com/St0neofFr33dom]
+#### Lisa Mac[https://github.com/hamstercat007]
+#### Miguel Lamas[https://github.com/MiguelLamas]
+#### Mohamed Ali[https://github.com/CodeNameMoe]
+#### Mutaz Obsiye [https://github.com/MumtazO]
 
