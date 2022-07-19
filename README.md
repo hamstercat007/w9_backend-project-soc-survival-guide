@@ -1,22 +1,153 @@
-# National Bootcamp - Week Nine Project Brief
+# SOC Survival Guide Back End
 
-For your project, you’ll be using what you’ve learned on the course so far to try and improve the lives of your users. In this case, the users will be close to home: bootcampers!
+This repository can be run independently, but can also run alongside the front end repository: https://github.com/SchoolOfCode/w9_frontend-project-nott-in-london
 
-To do this, you’ll need to take the time to understand your user (a bootcamper), their experiences, and their problems. Specifically, it might be good to focus on how to enhance the remote experience of a bootcamper, or what can help them with the vast amount of learning there is to do as a new developer. What do they need? What problem might they have that your application could solve for them? How can you get into the mindset of your user and keep them at the centre of your problem-solving?
+This repository holds the code to make RESTful API, it runs on an Express Server, making queries to a POSTGRESQL Database.
+The credentials for the databse will be stored in your environment variables.
 
-The high level outcomes from this project should be:
+The server handles requests to a database that contains online learning resources for coding bootcampers.
+The SOC Survival Guide website makes fetch requests to this server
 
-- A minimum viable product (MVP) showcasing an innovative full stack application which meets the user need you’ve identified
-- A presentation, complete with how you worked as a team and a demonstration of the project
 
-Your project application might include the following:
 
-- Include a user experience created in React
-- Build a REST API which is used by your front-end
-- Be supported by a Postgresql database with multiple tables
-- Be built and managed in an agile way
-- Utilise testing for ensuring robust code
 
-Remember, you only have a few days to code a solution, so being agile is key. That means brainstorming what you want to build, and working in sprints to deliver value each time. After each sprint, you can reassess and either continue on course or iterate towards a better solution. Have a plan which is incremental steps, rather than all or nothing.
+## Environment Variables
 
-Click the link to see the [Project Guidelines](https://github.com/SchoolOfCode/project-guidelines/blob/master/project-week.md)
+To run this project, you will need to add the following environment variables to your .env file
+
+#### PGUSER
+#### PGHOST
+#### PGDATABASE
+#### PGPASSWORD
+#### PGPORT
+
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/SchoolOfCode/w9_backend-project-nott-in-london
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
+
+
+
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  npm run test
+```
+
+
+## Architecture
+
+### db
+
+Contains a file that attaches your database credentials to the PostgreSql pool.
+Contains scripts to create a resources table, populate it with starting resources from the library, and to drop the table if you need to reset
+
+### lib
+
+Contains a data file, containing array of objects, each object has information on a different learning resource
+
+### models
+
+Contains a file of functions, each function contains a PostgreSQL query. The functions are exported to be used in the routers.
+
+### routes
+
+Contains a series of files that, each file containging route handlers for particular uri addresses e.g. index.js handles requests to /api/v1
+resources.js handles requests to /api/v1/resources
+users.js handles requests to /api/v1.users
+
+### public/views
+
+Was installed by express-generator(http://expressjs.com/en/starter/generator.html). We did not change these files, as we didn't know what it would break.
+
+### bin
+
+Contains the default port number, if you want to change it you will find in the www file
+
+## API Reference
+
+#### Get all entries
+
+```http
+  GET /api/v1/resources
+```
+
+No parameters needed to get all entries
+
+
+#### Get entry by category
+
+```http
+  GET /api/v1/resources?category={}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `category`| `string` | **Required**. Name of category    |
+
+
+#### Post entry to database
+
+```http
+  POST /api/v1/resources
+```
+
+| Parameter    | Type     | Description                                       |
+| :--------    | :------- | :------------------------------------------------ |
+| `body`       | `object` | **Required**. Object containing the parameters    |
+| `headline`   | `string` | **Required**. Title of resource                   |
+| `description`| `string` | **Required**. Brief description about the resource|
+| `url`        | `string` | **Required**. link to the resource                |
+| `category`   | `string` | **Required**. what topic is the resource about    |
+| `format`     | `string` | **Required**. video or documentation              |
+
+
+#### Delete Item item
+
+```http
+ Delete /api/items/${id}
+```
+
+| Parameter | Type     | Description                        |
+| :-------- | :------- | :----------------------------------|
+| `id`      | `string` | **Required**. Id of item to delete |
+
+
+
+
+
+
+## Authors
+
+#### Christophe Charbonneau-Freeston[https://github.com/St0neofFr33dom]
+#### Lisa Mac[https://github.com/hamstercat007]
+#### Miguel Lamas[https://github.com/MiguelLamas]
+#### Mohamed Ali[https://github.com/CodeNameMoe]
+#### Mutaz Obsiye [https://github.com/MumtazO]
+
